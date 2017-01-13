@@ -222,6 +222,7 @@
     <Compile Include="Models\Flight.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Singleton\SeatGenerator.cs" />
     <Compile Include="Models\Strategy\StrategyContext.cs" />
     <Compile Include="Models\Strategy\StrategyList.cs" />
     <Compile Include="Models\Strategy\StrategyTiles.cs" />
@@ -294,6 +295,8 @@
     <Content Include="Views\Flights\Index.cshtml" />
     <Content Include="Views\Home\IndexList.cshtml" />
     <Content Include="Views\Home\IndexTiles.cshtml" />
+    <Content Include="Views\Flights\IndexList.cshtml" />
+    <Content Include="Views\Flights\IndexTiles.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

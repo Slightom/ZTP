@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ZTP.Models;
+using ZTP.Models.Strategy;
 
 namespace ZTP.Controllers
 {
@@ -20,6 +21,7 @@ namespace ZTP.Controllers
             var flights = db.Flights.Include(f => f.ArrivalAirport).Include(f => f.DepartureAirport);
             return View(flights.ToList());
         }
+
 
         // GET: Flights/Details/5
         public ActionResult Details(int? id)

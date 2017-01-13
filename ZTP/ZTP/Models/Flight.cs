@@ -17,5 +17,6 @@ namespace ZTP.Models
 
         public virtual Airport DepartureAirport { get; set; }
         public virtual Airport ArrivalAirport { get; set; }
+        public virtual ICollection<Ticket> Tickets { get; set; }
     }
 }
