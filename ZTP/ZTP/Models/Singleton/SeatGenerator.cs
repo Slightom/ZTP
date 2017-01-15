@@ -23,6 +23,13 @@ namespace ZTP.Models.Singleton
 
             if (seatsTaken < flight.NumberOfSeats)
             {
+                var seatsList = flight.Tickets.Select(ticket => ticket.SeatNumber).ToList();
+
+                for (int i = 1; i < seatsTaken; i++)
+                {
+                    if (!seatsList.Contains(i)) return i;
+                }
+
                 seatsTaken++;
                 return seatsTaken;
             }
