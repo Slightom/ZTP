@@ -27,6 +27,7 @@ namespace ZTP.Controllers
 
         public ActionResult IndexList(string searchString, int? page, SearchModel sm)
 
+
         {
             var flights = db.Flights.Include(p=>p.ArrivalAirport).Include(p=>p.DepartureAirport);
 

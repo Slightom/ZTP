@@ -1,0 +1,13 @@
+﻿<div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+        <span>Change View</span>
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+        <li><a onclick="location.href='@Url.Action("ListDisplay", "Flights")'">List</a></li>
+        <li><a onclick="location.href='@Url.Action("TilesDisplay", "Flights")'">Tiles</a></li>
+    </ul>
+</div>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>

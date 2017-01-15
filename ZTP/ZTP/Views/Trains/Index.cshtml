@@ -1,0 +1,63 @@
+﻿@model IEnumerable<ZTP.Models.Train>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DepartureStationID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ArrivalStationID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DepartureDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ArrivalDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumberOfSeats)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DepartureStationID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ArrivalStationID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DepartureDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ArrivalDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumberOfSeats)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.TrainID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.TrainID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.TrainID })
+        </td>
+    </tr>
+}
+
+</table>

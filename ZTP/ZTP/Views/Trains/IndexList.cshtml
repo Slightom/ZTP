@@ -1,0 +1,128 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+
+@model IPagedList<ZTP.Models.Train>
+
+<div class="container">
+    <div style="margin-bottom:18px;"> </div>
+
+    <div>
+        <div class="col-sm-12 col-md-12 col-lg-8">
+            <div class="main_panel">
+
+                <div>
+                    @Html.Partial("ChangeView")
+                </div>
+
+                @if (ViewBag.searchString != null)
+                {
+                    <h2>Searching Results for: @ViewBag.searchString</h2>
+                }
+                else
+                {
+                    <h2>Latest Trains:</h2>
+                }
+
+                <table class="table table-hover">
+
+                    @foreach (var item in Model)
+                    {
+
+                        <tr onclick="location.href='@Url.Action("Details", "Trains", new { id=item.TrainID })'">
+                            <td style="text-align:center; width: 180px;">
+                                <img src="@item.DepartureStation.PhotoPath" style="height:120px" width="150" />
+                            </td>
+                            <td style="text-align:left">
+                                <span><br />From: @item.DepartureStation.Location</span>
+                                <p><br />DepartureDate: <br />@item.DepartureDate</p>
+                            </td>
+
+                            <td style="text-align:right">
+                                <span><br />To: @item.ArrivalStation.Location</span>
+                                <p><br />ArrivalDate: <br />@item.ArrivalDate</p>
+                            </td>
+
+                            <td style="text-align:right">
+                                <img src="@item.ArrivalStation.PhotoPath" style="height:120px" width="150" />
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+
+
+
+            </div>
+
+            @Html.PagedListPager(Model, page => Url.Action("IndexList", new { page, searchString = Request.QueryString["searchString"] }),
+                new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded }
+            )
+        </div>
+
+        <div class="col-sm-12 col-md-12 col-lg-4">
+
+            <div id="zegar" style="font-size: 40px;text-align: center;">
+            </div>
+
+
+
+            @using (Html.BeginForm("IndexList", "Trains", FormMethod.Get))
+            {
+                <div class="answer_panel">
+
+                    <div style="text-align:center; padding: 15px 15px;">
+                        <span style="color: black;">@Html.TextBox("SearchString")</span>
+
+                        <input type="submit" value="Search" class="mySubmitButton" />
+                    </div>
+
+                </div>
+
+                <div style="margin-top: 0px">
+                    <div id="moreOptions" class="d1">
+                        <span style="font-size:10px;">More Options</span>
+                        <span style="font-size:10px;" class="glyphicon glyphicon-chevron-down"></span>
+                    </div>
+                </div>
+            }
+
+            @using (Html.BeginForm("IndexList", "Flights", FormMethod.Get))
+            {
+                <div id="SearchModelDiv" class="asd" style="display:@ViewBag.Filters">
+                    @Html.Action("GenerateSearchModel", "Trains", new { model = ViewBag.SM })
+
+                    <div class="form-group">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-8">
+                            <button type="submit" value="Search" class="mySubmitButton">Search</button>
+                            <input type="button" value="Clear Filtrs" class="btn btn-danger" onclick="location.href='@Url.Action("IndexList", "Trains")'" />
+                        </div>
+                    </div>
+                </div>
+
+
+            }
+
+
+        </div>
+
+
+
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $("#moreOptions").click(function () {
+            $('#SearchModelDiv').slideToggle("slow");
+        });
+    });
+
+</script>
+
+
+
+

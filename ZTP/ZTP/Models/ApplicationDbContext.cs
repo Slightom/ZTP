@@ -20,23 +20,37 @@ namespace ZTP.Models
         public DbSet<Flight> Flights { get; set; }
         public DbSet<Ticket> Tickets { get; set; }
         public DbSet<Train> Trains { get; set; }
+        public DbSet<Station> Stations { get; set; }
 
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
 
-            // Messages relations
+            // 1 Flight 2 Airports
             modelBuilder.Entity<Flight>()
                         .HasRequired(b => b.ArrivalAirport)
-                        .WithMany(a => a.FlightsFrom)
+                        .WithMany(a => a.FlightsTo)
                         .HasForeignKey(b => b.ArrivalAirportID)
                         .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Flight>()
                         .HasRequired(b => b.DepartureAirport)
-                        .WithMany(a => a.FlightsTo)
+                        .WithMany(a => a.FlightsFrom)
                         .HasForeignKey(b => b.DepartureAirportID)
+                        .WillCascadeOnDelete(false);
+
+            // 1 Train 2 Stations
+            modelBuilder.Entity<Train>()
+                        .HasRequired(b => b.ArrivalStation)
+                        .WithMany(a => a.TrainsTo)
+                        .HasForeignKey(b => b.ArrivalStationID)
+                        .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Train>()
+                        .HasRequired(b => b.DepartureStation)
+                        .WithMany(a => a.TrainsFrom)
+                        .HasForeignKey(b => b.DepartureStationID)
                         .WillCascadeOnDelete(false);
 
 
