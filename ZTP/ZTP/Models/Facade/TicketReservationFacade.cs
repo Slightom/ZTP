@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using ZTP.Models.Classes;
 
 namespace ZTP.Models.Facade
 {
@@ -16,25 +17,25 @@ namespace ZTP.Models.Facade
             _trainReservationSystem = new TrainReservationSystem();
         }
 
-        public bool ReserveTicket(int transportId, string userId, string transport)
+        public bool ReserveTicket(int transportId, string userId, Enums.TransportEnum transport, Enums.TicketType ticketType)
         {
             switch (transport)
             {
-                case "flight":
+                case Enums.TransportEnum.Flight:
                     {
                         if (_flightReservationSystem.IsTicketAvailable(transportId))
                         {
-                            _flightReservationSystem.ReserveTicket(transportId, userId);
+                            _flightReservationSystem.ReserveTicket(transportId, userId, ticketType);
                             return true;
                         }
                         break;
                     }
-                case "train":
+                case Enums.TransportEnum.Train:
                     {
 
                         if (_trainReservationSystem.IsTicketAvailable(transportId))
                         {
-                            _trainReservationSystem.ReserveTicket(transportId, userId);
+                            _trainReservationSystem.ReserveTicket(transportId, userId, ticketType);
                             return true;
                         }
                         break;
@@ -42,6 +43,6 @@ namespace ZTP.Models.Facade
             }
 
             return false;
-        } 
+        }
     }
 }
