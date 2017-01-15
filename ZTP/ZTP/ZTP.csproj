@@ -211,7 +211,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\IReservation.cs" />
-    <Compile Include="Interfaces\Strategy.cs" />
+    <Compile Include="Interfaces\IStrategy.cs" />
     <Compile Include="Migrations\201701111537308_init.cs" />
     <Compile Include="Migrations\201701111537308_init.Designer.cs">
       <DependentUpon>201701111537308_init.cs</DependentUpon>
@@ -240,6 +240,11 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Airport.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
+    <Compile Include="Models\Classes\ConcessionaryTicket.cs" />
+    <Compile Include="Models\Classes\EmailService.cs" />
+    <Compile Include="Models\Classes\Enums.cs" />
+    <Compile Include="Models\Classes\NormalTicket.cs" />
+    <Compile Include="Models\Classes\TicketPattern.cs" />
     <Compile Include="Models\Facade\FlightReservationSystem.cs" />
     <Compile Include="Models\Facade\TicketReservationFacade.cs" />
     <Compile Include="Models\Facade\TrainReservationSystem.cs" />

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using ZTP.Interfaces;
+using ZTP.Models.Classes;
 using ZTP.Models.Singleton;
 
 namespace ZTP.Models.Facade
@@ -19,19 +20,23 @@ namespace ZTP.Models.Facade
             return seatsTaken < flight.NumberOfSeats;
         }
 
-        public void ReserveTicket(int flightId, string userId)
+        public void ReserveTicket(int flightId, string userId, Enums.TicketType ticketType)
         {
-            var seat = SeatGenerator.GetInstance().GetSeatNumber(flightId, "flight");
-            var flight = _dbContext.Flights.First(x => x.FlightID == flightId);
-            var ticket = new Ticket()
+            switch (ticketType)
             {
-                FlightID = flightId,
-                SeatNumber = seat,
-                Price = flight.Price,
-                UserID = userId
-            };
-
-            _dbContext.Tickets.Add(ticket);
+                case Enums.TicketType.Concessionary:
+                    {
+                        var ticket = new ConcessionaryTicket();
+                        ticket.GenerateTicket(flightId, userId, Enums.TransportEnum.Flight);
+                        break;
+                    }
+                case Enums.TicketType.Normal:
+                    {
+                        var ticket = new NormalTicket();
+                        ticket.GenerateTicket(flightId, userId, Enums.TransportEnum.Flight);
+                        break;
+                    }
+            }
         }
     }
 }

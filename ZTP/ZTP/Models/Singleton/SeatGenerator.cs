@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using ZTP.Models.Classes;
 
 namespace ZTP.Models.Singleton
 {
@@ -17,12 +18,12 @@ namespace ZTP.Models.Singleton
             return _seatGenerator;
         }
 
-        public int GetSeatNumber(int id, string transport)
+        public int GetSeatNumber(int id, Enums.TransportEnum transport)
         {
             switch (transport)
             {
-                case "train":
-                {
+                case Enums.TransportEnum.Train:
+                    {
                         var flight = _dbContext.Flights.First(x => x.FlightID == id);
                         var seatsTaken = flight.Tickets.Count;
 
@@ -40,7 +41,7 @@ namespace ZTP.Models.Singleton
                         }
                         break;
                 }
-                case "flight":
+                case Enums.TransportEnum.Flight:
                 {
                         var train = _dbContext.Trains.First(x => x.TrainID == id);
                         var seatsTaken = train.Tickets.Count;
