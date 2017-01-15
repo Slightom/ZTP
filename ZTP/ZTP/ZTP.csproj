@@ -207,34 +207,15 @@
     <Compile Include="Controllers\FlightsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\TrainsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\IReservation.cs" />
     <Compile Include="Interfaces\IStrategy.cs" />
-    <Compile Include="Migrations\201701111537308_init.cs" />
-    <Compile Include="Migrations\201701111537308_init.Designer.cs">
-      <DependentUpon>201701111537308_init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201701131816116_added PhotoPath to Airport.cs" />
-    <Compile Include="Migrations\201701131816116_added PhotoPath to Airport.Designer.cs">
-      <DependentUpon>201701131816116_added PhotoPath to Airport.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201701131827330_added availablefunds to User.cs" />
-    <Compile Include="Migrations\201701131827330_added availablefunds to User.Designer.cs">
-      <DependentUpon>201701131827330_added availablefunds to User.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201701150918466_added generateSearchModel model.cs" />
-    <Compile Include="Migrations\201701150918466_added generateSearchModel model.Designer.cs">
-      <DependentUpon>201701150918466_added generateSearchModel model.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201701151038161_remove date from searchmodel.cs" />
-    <Compile Include="Migrations\201701151038161_remove date from searchmodel.Designer.cs">
-      <DependentUpon>201701151038161_remove date from searchmodel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201701151741495_train.cs" />
-    <Compile Include="Migrations\201701151741495_train.Designer.cs">
-      <DependentUpon>201701151741495_train.cs</DependentUpon>
+    <Compile Include="Migrations\201701151938445_init.cs" />
+    <Compile Include="Migrations\201701151938445_init.Designer.cs">
+      <DependentUpon>201701151938445_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -267,6 +248,17 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\MyCSS.css" />
+    <Content Include="Content\photos\bialystok.jpg" />
+    <Content Include="Content\photos\denver.PNG" />
+    <Content Include="Content\photos\frankfurt.PNG" />
+    <Content Include="Content\photos\gdansk.jpg" />
+    <Content Include="Content\photos\krakow.jpg" />
+    <Content Include="Content\photos\london.PNG" />
+    <Content Include="Content\photos\losangeles.PNG" />
+    <Content Include="Content\photos\madrit.PNG" />
+    <Content Include="Content\photos\paris.PNG" />
+    <Content Include="Content\photos\radom.PNG" />
+    <Content Include="Content\photos\warsaw.PNG" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -333,6 +325,14 @@
     <Content Include="Views\Flights\IndexTiles.cshtml" />
     <Content Include="Views\Shared\GenerateSearchModel.cshtml" />
     <Content Include="Views\Shared\ChangeView.cshtml" />
+    <Content Include="Views\Trains\ChangeView.cshtml" />
+    <Content Include="Views\Trains\Create.cshtml" />
+    <Content Include="Views\Trains\Delete.cshtml" />
+    <Content Include="Views\Trains\Details.cshtml" />
+    <Content Include="Views\Trains\Edit.cshtml" />
+    <Content Include="Views\Trains\Index.cshtml" />
+    <Content Include="Views\Trains\IndexList.cshtml" />
+    <Content Include="Views\Trains\IndexTiles.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -346,23 +346,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201701111537308_init.resx">
-      <DependentUpon>201701111537308_init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201701131816116_added PhotoPath to Airport.resx">
-      <DependentUpon>201701131816116_added PhotoPath to Airport.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201701131827330_added availablefunds to User.resx">
-      <DependentUpon>201701131827330_added availablefunds to User.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201701150918466_added generateSearchModel model.resx">
-      <DependentUpon>201701150918466_added generateSearchModel model.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201701151038161_remove date from searchmodel.resx">
-      <DependentUpon>201701151038161_remove date from searchmodel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201701151741495_train.resx">
-      <DependentUpon>201701151741495_train.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201701151938445_init.resx">
+      <DependentUpon>201701151938445_init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

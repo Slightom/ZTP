@@ -165,8 +165,6 @@ C:\Users\marcin\Documents\GitHub\ztp\ZTP\ZTP\bin\Microsoft.Owin.Security.Twitter
 C:\Users\marcin\Documents\GitHub\ztp\ZTP\ZTP\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\marcin\Documents\GitHub\ztp\ZTP\ZTP\obj\Debug\ZTP.csprojResolveAssemblyReference.cache
 C:\Users\marcin\Documents\GitHub\ztp\ZTP\ZTP\obj\Debug\ZTP.Migrations.init.resources
-C:\Users\marcin\Documents\GitHub\ztp\ZTP\ZTP\obj\Debug\ZTP.Migrations.addedPhotoPathtoAirport.resources
-C:\Users\marcin\Documents\GitHub\ztp\ZTP\ZTP\obj\Debug\ZTP.Migrations.addedavailablefundstoUser.resources
 C:\Users\marcin\Documents\GitHub\ztp\ZTP\ZTP\obj\Debug\ZTP.csproj.GenerateResource.Cache
 C:\Users\marcin\Documents\GitHub\ztp\ZTP\ZTP\obj\Debug\ZTP.dll
 C:\Users\marcin\Documents\GitHub\ztp\ZTP\ZTP\obj\Debug\ZTP.pdb
@@ -260,7 +258,5 @@ C:\Users\marcin\Documents\GitHub\ztp\ZTP\ZTP\bin\PagedList.dll
 C:\Users\marcin\Documents\GitHub\ztp\ZTP\ZTP\bin\PagedList.Mvc.dll
 C:\Users\marcin\Documents\GitHub\ztp\ZTP\ZTP\bin\PagedList.xml
 C:\Users\marcin\Documents\GitHub\ztp\ZTP\ZTP\bin\PagedList.Mvc.xml
-C:\Users\marcin\Documents\GitHub\ztp\ZTP\ZTP\obj\Debug\ZTP.Migrations.addedgenerateSearchModelmodel.resources
-C:\Users\marcin\Documents\GitHub\ztp\ZTP\ZTP\obj\Debug\ZTP.Migrations.removedatefromsearchmodel.resources
 C:\Users\Tom\Documents\Visual Studio 2015\Projects\ZTP\ZTP\ZTP\obj\Debug\ZTP.Migrations.init.resources
 C:\Users\Tom\Documents\Visual Studio 2015\Projects\ZTP\ZTP\ZTP\obj\Debug\ZTP.csproj.GenerateResource.Cache

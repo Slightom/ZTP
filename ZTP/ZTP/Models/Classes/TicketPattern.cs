@@ -53,7 +53,7 @@ namespace ZTP.Models.Classes
 
         private Ticket FlightTicket(int flightId, string userId)
         {
-            var seat = SeatGenerator.GetInstance().GetSeatNumber(flightId, "flight");
+            var seat = SeatGenerator.GetInstance().GetSeatNumber(flightId, Enums.TransportEnum.Flight);
             var flight = _dbContext.Flights.First(x => x.FlightID == flightId);
             var ticket = new Ticket()
             {
@@ -67,7 +67,7 @@ namespace ZTP.Models.Classes
 
         private Ticket TrainTicket(int trainId, string userId)
         {
-            var seat = SeatGenerator.GetInstance().GetSeatNumber(trainId, "train");
+            var seat = SeatGenerator.GetInstance().GetSeatNumber(trainId, Enums.TransportEnum.Train);
             var train = _dbContext.Trains.First(x => x.TrainID == trainId);
             var ticket = new Ticket()
             {
