@@ -29,8 +29,6 @@ namespace ZTP.Migrations
             //    );
             //
 
-
-
             Models.IdentityManager im = new Models.IdentityManager();
             if (!im.RoleExists("Admin")) { im.CreateRole("Admin"); }
             if (!im.RoleExists("User")) { im.CreateRole("User"); }
@@ -131,7 +129,7 @@ namespace ZTP.Migrations
 
             //////////////////////////////////////////////////////////////////////////////////////////
             Flight f = new Flight();
-            int departureairportid = context.Airports.Where(p => p.Name == "Warsaw Chopin Airport").Select(p=>p.AirportID).First();
+            int departureairportid = context.Airports.Where(p => p.Name == "Warsaw Chopin Airport").Select(p => p.AirportID).First();
             int arrivalairportid = context.Airports.Where(p => p.Name == "London Heathrow Airport").Select(p => p.AirportID).First();
             f.DepartureAirportID = departureairportid;
             f.ArrivalAirportID = arrivalairportid;
@@ -240,6 +238,103 @@ namespace ZTP.Migrations
             f.NumberOfSeats = 380;
             f.Price = 1500;
             context.Flights.AddOrUpdate(p => p.DepartureDate, f);
+            context.SaveChanges();
+
+
+
+
+            ////////////////////////////////////////////////////////////////////////////////////////
+            Station s = new Station();
+            s.Name = "Railway Station, Bialystok";
+            s.Location = "Bialystok, Poland";
+            s.PhotoPath = "/Content/photos/bialystok.jpg";
+            context.Stations.AddOrUpdate(p => p.Name, s);
+            context.SaveChanges();
+
+            s = new Station();
+            s.Name = "Railway Station, Gdansk-Wrzeszcz";
+            s.Location = "Gdansk, Poland";
+            s.PhotoPath = "/Content/photos/gdansk.jpg";
+            context.Stations.AddOrUpdate(p => p.Name, s);
+            context.SaveChanges();
+
+            s = new Station();
+            s.Name = "Railway Station, Warsaw-Central";
+            s.Location = "Warsaw, Poland";
+            s.PhotoPath = "/Content/photos/warsaw.png";
+            context.Stations.AddOrUpdate(p => p.Name, s);
+            context.SaveChanges();
+
+            s = new Station();
+            s.Name = "Railway Station, Krakow-Main";
+            s.Location = "Krakow, Poland";
+            s.PhotoPath = "/Content/photos/krakow.jpg";
+            context.Stations.AddOrUpdate(p => p.Name, s);
+            context.SaveChanges();
+
+
+
+
+
+            ////////////////////////////////////////////////////////////////////////////////////////
+            Train t = new Train();
+            int departurestationid = context.Stations.Where(p => p.Name == "Railway Station, Bialystok").Select(p => p.StationID).First();
+            int arrivalstationid = context.Stations.Where(p => p.Name == "Railway Station, Gdansk-Wrzeszcz").Select(p => p.StationID).First();
+            t.DepartureStationID = departurestationid;
+            t.ArrivalStationID = arrivalstationid;
+            t.DepartureDate = new DateTime(2017, 01, 20, 10, 00, 00);
+            t.ArrivalDate = new DateTime(2017, 01, 20, 12, 50, 00);
+            t.NumberOfSeats = 200;
+            t.Price = 60;
+            context.Trains.AddOrUpdate(p => p.DepartureDate, t);
+            context.SaveChanges();
+
+            t = new Train();
+            departurestationid = context.Stations.Where(p => p.Name == "Railway Station, Bialystok").Select(p => p.StationID).First();
+            arrivalstationid = context.Stations.Where(p => p.Name == "Railway Station, Krakow-Main").Select(p => p.StationID).First();
+            t.DepartureStationID = departurestationid;
+            t.ArrivalStationID = arrivalstationid;
+            t.DepartureDate = new DateTime(2017, 01, 22, 12, 00, 00);
+            t.ArrivalDate = new DateTime(2017, 01, 22, 18, 25, 00);
+            t.NumberOfSeats = 300;
+            t.Price = 100;
+            context.Trains.AddOrUpdate(p => p.DepartureDate, t);
+            context.SaveChanges();
+
+            t = new Train();
+            departurestationid = context.Stations.Where(p => p.Name == "Railway Station, Krakow-Main").Select(p => p.StationID).First();
+            arrivalstationid = context.Stations.Where(p => p.Name == "Railway Station, Warsaw-Central").Select(p => p.StationID).First();
+            t.DepartureStationID = departurestationid;
+            t.ArrivalStationID = arrivalstationid;
+            t.DepartureDate = new DateTime(2017, 01, 24, 06, 00, 00);
+            t.ArrivalDate = new DateTime(2017, 01, 24, 09, 45, 00);
+            t.NumberOfSeats = 420;
+            t.Price = 80;
+            context.Trains.AddOrUpdate(p => p.DepartureDate, t);
+            context.SaveChanges();
+
+            t = new Train();
+            departurestationid = context.Stations.Where(p => p.Name == "Railway Station, Warsaw-Central").Select(p => p.StationID).First();
+            arrivalstationid = context.Stations.Where(p => p.Name == "Railway Station, Bialystok").Select(p => p.StationID).First();
+            t.DepartureStationID = departurestationid;
+            t.ArrivalStationID = arrivalstationid;
+            t.DepartureDate = new DateTime(2017, 01, 19, 14, 00, 00);
+            t.ArrivalDate = new DateTime(2017, 01, 19, 17, 45, 00);
+            t.NumberOfSeats = 500;
+            t.Price = 70;
+            context.Trains.AddOrUpdate(p => p.DepartureDate, t);
+            context.SaveChanges();
+
+            t = new Train();
+            departurestationid = context.Stations.Where(p => p.Name == "Railway Station, Warsaw-Central").Select(p => p.StationID).First();
+            arrivalstationid = context.Stations.Where(p => p.Name == "Railway Station, Gdansk-Wrzeszcz").Select(p => p.StationID).First();
+            t.DepartureStationID = departurestationid;
+            t.ArrivalStationID = arrivalstationid;
+            t.DepartureDate = new DateTime(2017, 01, 18, 06, 00, 00);
+            t.ArrivalDate = new DateTime(2017, 01, 18, 07, 45, 00);
+            t.NumberOfSeats = 500;
+            t.Price = 60;
+            context.Trains.AddOrUpdate(p => p.DepartureDate, t);
             context.SaveChanges();
         }
     }

@@ -1,0 +1,72 @@
+﻿@model ZTP.Models.Train
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Train</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DepartureStationID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DepartureStationID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ArrivalStationID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ArrivalStationID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DepartureDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DepartureDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ArrivalDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ArrivalDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfSeats)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfSeats)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
