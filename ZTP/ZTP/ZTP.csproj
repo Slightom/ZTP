@@ -77,6 +77,14 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -215,12 +223,21 @@
     <Compile Include="Migrations\201701131827330_added availablefunds to User.Designer.cs">
       <DependentUpon>201701131827330_added availablefunds to User.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201701150918466_added generateSearchModel model.cs" />
+    <Compile Include="Migrations\201701150918466_added generateSearchModel model.Designer.cs">
+      <DependentUpon>201701150918466_added generateSearchModel model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701151038161_remove date from searchmodel.cs" />
+    <Compile Include="Migrations\201701151038161_remove date from searchmodel.Designer.cs">
+      <DependentUpon>201701151038161_remove date from searchmodel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Airport.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Flight.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
+    <Compile Include="Models\HelpfulModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Singleton\SeatGenerator.cs" />
     <Compile Include="Models\Strategy\StrategyContext.cs" />
@@ -233,6 +250,8 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="Content\MyCSS.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -297,6 +316,8 @@
     <Content Include="Views\Home\IndexTiles.cshtml" />
     <Content Include="Views\Flights\IndexList.cshtml" />
     <Content Include="Views\Flights\IndexTiles.cshtml" />
+    <Content Include="Views\Shared\GenerateSearchModel.cshtml" />
+    <Content Include="Views\Shared\ChangeView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -318,6 +339,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201701131827330_added availablefunds to User.resx">
       <DependentUpon>201701131827330_added availablefunds to User.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701150918466_added generateSearchModel model.resx">
+      <DependentUpon>201701150918466_added generateSearchModel model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701151038161_remove date from searchmodel.resx">
+      <DependentUpon>201701151038161_remove date from searchmodel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

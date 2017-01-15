@@ -1,7 +1,122 @@
-﻿
-@{
-    ViewBag.Title = "IndexTiles";
-}
+﻿@using PagedList.Mvc;
+@using PagedList;
 
-<h2>IndexTiles</h2>
+@model IPagedList<ZTP.Models.Flight>
+
+<div class="container">
+    <div style="margin-bottom:18px;"> </div>
+
+    <div>
+        <div class="col-sm-12 col-md-12 col-lg-8">
+            <div class="main_panel">
+                <div>
+                    @Html.Partial("ChangeView")
+                </div>
+
+                @if (ViewBag.searchString != null)
+                {
+                    <h2>Searching Results for: @ViewBag.searchString</h2>
+                }
+                else
+                {
+                    <h2>Latest Flights:</h2>
+                }
+
+                @* /////////////////////////////////////////////////////////////////////////////////////// *@
+                <div class="row">
+                    @foreach (var c in Model)
+                    {
+                        <div class="col-lg-6">
+                            <a href="@Url.Action("Details", "Flights", new { id=c.FlightID })" class="squarelink">
+                                <div class="square">
+                                    <span>
+                                        <br />
+                                        From: @c.DepartureAirport.Location<br />
+                                        @c.DepartureDate<br />
+                                        <img src="@c.ArrivalAirport.PhotoPath" style="height:160px" width="200" /><br />
+                                        To: @c.ArrivalAirport.Location<br />
+                                        @c.ArrivalDate
+                                    </span>
+                                </div>
+                            </a>
+                        </div>
+                    }
+                </div>
+                @* /////////////////////////////////////////////////////////////////////////////////////// *@
+                <div>
+                    @Html.PagedListPager(Model, page => Url.Action("IndexTiles", new { page, searchString = Request.QueryString["searchString"] }),
+                new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded }
+                 )
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+        <div class="col-sm-12 col-md-12 col-lg-4">
+
+            <div id="zegar" style="font-size: 40px;text-align: center;">
+            </div>
+
+
+
+            @using (Html.BeginForm("IndexTiles", "Flights", FormMethod.Get))
+            {
+                <div class="answer_panel">
+
+                    <div style="text-align:center; padding: 15px 15px;">
+                        <span style="color: black;">@Html.TextBox("SearchString")</span>
+
+                        <input type="submit" value="Search" class="mySubmitButton" />
+                    </div>
+
+                </div>
+
+                <div style="margin-top: 0px">
+                    <div id="moreOptions" class="d1">
+                        <span style="font-size:10px;">More Options</span>
+                        <span style="font-size:10px;" class="glyphicon glyphicon-chevron-down"></span>
+                    </div>
+                </div>
+            }
+
+            @using (Html.BeginForm("IndexTiles", "Flights", FormMethod.Get))
+            {
+                <div id="SearchModelDiv" class="asd" style="display:@ViewBag.Filters">
+                    @Html.Action("GenerateSearchModel", "Flights", new { model = ViewBag.SM })
+
+                    <div class="form-group">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-8">
+                            <button type="submit" value="Search" class="mySubmitButton">Search</button>
+                            <input type="button" value="Clear Filtrs" class="btn btn-danger" onclick="location.href='@Url.Action("IndexTiles", "Flights")'" />
+                        </div>
+                    </div>
+                </div>
+
+
+            }
+
+
+        </div>
+
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $("#moreOptions").click(function () {
+            $('#SearchModelDiv').slideToggle("slow");
+        });
+    });
+
+</script>
+
+
+
 

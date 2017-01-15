@@ -52,5 +52,7 @@ namespace ZTP.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<ZTP.Models.SearchModel> SearchModels { get; set; }
     }
 }

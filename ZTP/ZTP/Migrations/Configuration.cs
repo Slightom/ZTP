@@ -63,63 +63,63 @@ namespace ZTP.Migrations
 
             ////////////////////////////////////////////////////////////////////////////////////////
             Airport a = new Airport();
-            a.Location = "Poland, Warsaw";
+            a.Location = "Warsaw, Poland";
             a.Name = "Warsaw Chopin Airport";
             a.PhotoPath = "/Content/photos/warsaw.png";
             context.Airports.AddOrUpdate(p => p.Name, a);
             context.SaveChanges();
 
             a = new Airport();
-            a.Location = "Poland, Warsaw";
+            a.Location = "Warsaw, Poland";
             a.Name = "Warsaw-Modlin Airport";
             a.PhotoPath = "/Content/photos/warsaw.png";
             context.Airports.AddOrUpdate(p => p.Name, a);
             context.SaveChanges();
 
             a = new Airport();
-            a.Location = "Poland, Radom";
+            a.Location = "Warsaw, Poland";
             a.Name = "Radom Airport";
             a.PhotoPath = "/Content/photos/radom.png";
             context.Airports.AddOrUpdate(p => p.Name, a);
             context.SaveChanges();
 
             a = new Airport();
-            a.Location = "United Kingdom, London";
+            a.Location = "London, United Kingdom";
             a.Name = "London Heathrow Airport";
             a.PhotoPath = "/Content/photos/london.png";
             context.Airports.AddOrUpdate(p => p.Name, a);
             context.SaveChanges();
 
             a = new Airport();
-            a.Location = "Germany, Frankfurt";
+            a.Location = "Frankfurt, Germany";
             a.Name = "Frankfurt Airport";
             a.PhotoPath = "/Content/photos/frankfurt.png";
             context.Airports.AddOrUpdate(p => p.Name, a);
             context.SaveChanges();
 
             a = new Airport();
-            a.Location = "USA, Los Angeles";
+            a.Location = "Los Angeles, USA";
             a.Name = "Los Angeles Airport";
             a.PhotoPath = "/Content/photos/losangeles.png";
             context.Airports.AddOrUpdate(p => p.Name, a);
             context.SaveChanges();
 
             a = new Airport();
-            a.Location = "USA, Denver";
+            a.Location = "Denver, USA";
             a.Name = "Denver International Airport";
             a.PhotoPath = "/Content/photos/denver.png";
             context.Airports.AddOrUpdate(p => p.Name, a);
             context.SaveChanges();
 
             a = new Airport();
-            a.Location = "Spain, Madrit";
+            a.Location = "Madrit, Spain";
             a.Name = "Madrid Barajas Airport";
             a.PhotoPath = "/Content/photos/madrit.png";
             context.Airports.AddOrUpdate(p => p.Name, a);
             context.SaveChanges();
 
             a = new Airport();
-            a.Location = "France, Paris";
+            a.Location = "Paris, France";
             a.Name = "Paris-Orly Airport";
             a.PhotoPath = "/Content/photos/paris.png";
             context.Airports.AddOrUpdate(p => p.Name, a);
