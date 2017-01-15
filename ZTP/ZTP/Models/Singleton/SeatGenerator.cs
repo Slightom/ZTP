@@ -8,6 +8,7 @@ namespace ZTP.Models.Singleton
     public class SeatGenerator
     {
         private static SeatGenerator _seatGenerator = new SeatGenerator();
+        private ApplicationDbContext _dbContext = new ApplicationDbContext();
 
         private SeatGenerator() { }
 
@@ -16,23 +17,50 @@ namespace ZTP.Models.Singleton
             return _seatGenerator;
         }
 
-        public int GetSeatNumber(ApplicationDbContext db, int id)
+        public int GetSeatNumber(int id, string transport)
         {
-            var flight = db.Flights.First(x => x.FlightID == id);
-            var seatsTaken = flight.Tickets.Count;
-
-            if (seatsTaken < flight.NumberOfSeats)
+            switch (transport)
             {
-                var seatsList = flight.Tickets.Select(ticket => ticket.SeatNumber).ToList();
-
-                for (int i = 1; i < seatsTaken; i++)
+                case "train":
                 {
-                    if (!seatsList.Contains(i)) return i;
-                }
+                        var flight = _dbContext.Flights.First(x => x.FlightID == id);
+                        var seatsTaken = flight.Tickets.Count;
 
-                seatsTaken++;
-                return seatsTaken;
+                        if (seatsTaken < flight.NumberOfSeats)
+                        {
+                            var seatsList = flight.Tickets.Select(ticket => ticket.SeatNumber).ToList();
+
+                            for (int i = 1; i < seatsTaken; i++)
+                            {
+                                if (!seatsList.Contains(i)) return i;
+                            }
+
+                            seatsTaken++;
+                            return seatsTaken;
+                        }
+                        break;
+                }
+                case "flight":
+                {
+                        var train = _dbContext.Trains.First(x => x.TrainID == id);
+                        var seatsTaken = train.Tickets.Count;
+
+                        if (seatsTaken < train.NumberOfSeats)
+                        {
+                            var seatsList = train.Tickets.Select(ticket => ticket.SeatNumber).ToList();
+
+                            for (int i = 1; i < seatsTaken; i++)
+                            {
+                                if (!seatsList.Contains(i)) return i;
+                            }
+
+                            seatsTaken++;
+                            return seatsTaken;
+                        }
+                        break;
+                }
             }
+            
             return 0;
         }
     }

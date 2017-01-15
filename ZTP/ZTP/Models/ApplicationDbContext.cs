@@ -19,6 +19,7 @@ namespace ZTP.Models
         public DbSet<Airport> Airports { get; set; }
         public DbSet<Flight> Flights { get; set; }
         public DbSet<Ticket> Tickets { get; set; }
+        public DbSet<Train> Trains { get; set; }
 
 
 

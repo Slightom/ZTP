@@ -9,6 +9,7 @@ namespace ZTP.Models
     {
         public int TicketID { get; set; }
         public int FlightID { get; set; }
+        public int TrainID { get; set; }
         public string UserID { get; set; }
 
         public double Price { get; set; }
@@ -17,6 +18,7 @@ namespace ZTP.Models
 
 
         public virtual Flight Flight { get; set; }
+        public virtual Train Train { get; set; }
         public virtual ApplicationUser User { get; set; }
     }
 }
