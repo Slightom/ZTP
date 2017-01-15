@@ -22,9 +22,9 @@ namespace ZTP.Models.Singleton
         {
             switch (transport)
             {
-                case Enums.TransportEnum.Train:
+                case Enums.TransportEnum.Flight:
                     {
-                        var flight = _dbContext.Flights.First(x => x.FlightID == id);
+                        var flight = _dbContext.Flights.Single(x => x.FlightID == id);
                         var seatsTaken = flight.Tickets.Count;
 
                         if (seatsTaken < flight.NumberOfSeats)
@@ -41,9 +41,9 @@ namespace ZTP.Models.Singleton
                         }
                         break;
                 }
-                case Enums.TransportEnum.Flight:
+                case Enums.TransportEnum.Train:
                 {
-                        var train = _dbContext.Trains.First(x => x.TrainID == id);
+                        var train = _dbContext.Trains.Single(x => x.TrainID == id);
                         var seatsTaken = train.Tickets.Count;
 
                         if (seatsTaken < train.NumberOfSeats)

@@ -9,7 +9,7 @@ namespace ZTP.Models.Classes
     {
         protected override double GetTicketPrice()
         {
-            throw new NotImplementedException();
+            return 100;
         }
     }
 }

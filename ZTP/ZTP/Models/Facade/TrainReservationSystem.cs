@@ -14,7 +14,7 @@ namespace ZTP.Models.Facade
 
         public bool IsTicketAvailable(int id)
         {
-            var train = _dbContext.Trains.First(x => x.TrainID == id);
+            var train = _dbContext.Trains.Single(x => x.TrainID == id);
             var seatsTaken = train.Tickets.Count;
 
             return seatsTaken < train.NumberOfSeats;

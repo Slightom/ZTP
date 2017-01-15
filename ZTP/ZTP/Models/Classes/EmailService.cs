@@ -13,31 +13,16 @@ namespace ZTP.Models.Classes
 
         public async Task<bool> SendEmailAsync(string userEmail, string mailbody, string subject)
         {
-            var from = new MailAddress("Ticket Service");
+            var from = new MailAddress("ticketserviceZTP@gmail.com");
             var to = new MailAddress(userEmail);
 
-            var useDefaultCredentials = true;
-            var enableSsl = true;
-            var replyto = ""; // set here your email; 
-            var userName = string.Empty;
-            var password = string.Empty;
-            var port = 25;
-            var host = "localhost";
-
-            userName = "ticketserviceZTP"; // setup here the username; 
-            password = "projektztp"; // setup here the password; 
-            bool.TryParse("true", out useDefaultCredentials); //setup here if it uses defaault credentials 
-            bool.TryParse("true", out enableSsl); //setup here if it uses ssl 
-            int.TryParse("25", out port); //setup here the port 
-            host = "www.google.com"; //setup here the host 
 
             using (var mail = new MailMessage(from, to))
             {
                 mail.Subject = subject;
                 mail.Body = mailbody;
-                mail.IsBodyHtml = true;
+                mail.IsBodyHtml = false;
 
-                mail.ReplyToList.Add(new MailAddress(replyto, "My Email"));
                 mail.ReplyToList.Add(from);
                 mail.DeliveryNotificationOptions = DeliveryNotificationOptions.Delay |
                                                    DeliveryNotificationOptions.OnFailure |
@@ -45,17 +30,6 @@ namespace ZTP.Models.Classes
 
                 using (var client = new SmtpClient())
                 {
-                    client.Host = host;
-                    client.EnableSsl = enableSsl;
-                    client.Port = port;
-                    client.UseDefaultCredentials = useDefaultCredentials;
-
-                    if (!client.UseDefaultCredentials && !string.IsNullOrEmpty(userName) &&
-                        !string.IsNullOrEmpty(password))
-                    {
-                        client.Credentials = new NetworkCredential(userName, password);
-                    }
-
                     await client.SendMailAsync(mail);
                 }
             }

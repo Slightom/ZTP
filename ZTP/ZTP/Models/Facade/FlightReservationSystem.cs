@@ -14,7 +14,7 @@ namespace ZTP.Models.Facade
 
         public bool IsTicketAvailable(int id)
         {
-            var flight = _dbContext.Flights.First(x => x.FlightID == id);
+            var flight = _dbContext.Flights.Single(x => x.FlightID == id);
             var seatsTaken = flight.Tickets.Count;
 
             return seatsTaken < flight.NumberOfSeats;

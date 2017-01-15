@@ -41,7 +41,8 @@ namespace ZTP.Models.Classes
             _dbContext.Tickets.Add(ticket);
 
             var emailBody = GenerateMailBody(transportId, transport);
-            var userEmail = _dbContext.Users.Where(x => x.Id.Equals(userId)).Select(x => x.Email).ToString();
+            var user = _dbContext.Users.Single(x => x.Id.Equals(userId));
+            var userEmail = user.Email;
 
             Task.Run(async () =>
             {
@@ -54,7 +55,7 @@ namespace ZTP.Models.Classes
         private Ticket FlightTicket(int flightId, string userId)
         {
             var seat = SeatGenerator.GetInstance().GetSeatNumber(flightId, Enums.TransportEnum.Flight);
-            var flight = _dbContext.Flights.First(x => x.FlightID == flightId);
+            var flight = _dbContext.Flights.Single(x => x.FlightID == flightId);
             var ticket = new Ticket()
             {
                 FlightID = flightId,
@@ -68,7 +69,7 @@ namespace ZTP.Models.Classes
         private Ticket TrainTicket(int trainId, string userId)
         {
             var seat = SeatGenerator.GetInstance().GetSeatNumber(trainId, Enums.TransportEnum.Train);
-            var train = _dbContext.Trains.First(x => x.TrainID == trainId);
+            var train = _dbContext.Trains.Single(x => x.TrainID == trainId);
             var ticket = new Ticket()
             {
                 TrainID = trainId,
@@ -88,14 +89,14 @@ namespace ZTP.Models.Classes
             {
                 case Enums.TransportEnum.Flight:
                 {
-                    var flight = _dbContext.Flights.First(x => x.FlightID == transportId);
+                    var flight = _dbContext.Flights.Single(x => x.FlightID == transportId);
                     text += flight.DepartureAirport.Name + " - " + flight.ArrivalAirport.Name + "\n";
                     text += "Dnia: " + flight.DepartureDate + "\n";
                     break;
                 }
                 case Enums.TransportEnum.Train:
                 {
-                    var train = _dbContext.Trains.First(x => x.TrainID == transportId);
+                    var train = _dbContext.Trains.Single(x => x.TrainID == transportId);
                     text += train.DepartureStation.Name + " - " + train.ArrivalStation.Name + "\n";
                     text += "Dnia: " + train.DepartureDate + "\n";
                     break;
