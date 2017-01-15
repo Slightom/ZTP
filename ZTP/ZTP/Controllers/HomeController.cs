@@ -48,14 +48,6 @@ namespace ZTP.Controllers
             return sc.ExecuteStrategy("Home");
         }
 
-        public ActionResult Test()
-        {
-            TicketReservationFacade fasada = new TicketReservationFacade();
-            fasada.ReserveTicket(1, "8887934e-c0a3-4eab-bca5-5556dfee1700", Enums.TransportEnum.Flight, Enums.TicketType.Normal);
-
-            return View();
-        }
-
 
     }
 }
