@@ -7,7 +7,10 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using ZTP.Models;
+using ZTP.Models.Classes;
+using ZTP.Models.Factory;
 using ZTP.Models.Strategy;
 
 namespace ZTP.Controllers
@@ -82,6 +85,25 @@ namespace ZTP.Controllers
                 return HttpNotFound();
             }
             return View(train);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Details(TrainViewModel trainViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var trainId = trainViewModel.Train.TrainID;
+                var userId = this.HttpContext.User.Identity.GetUserId();
+                var price = trainViewModel.Train.Price;
+                var ticketType = (Enums.TicketType)trainViewModel.SelectedType;
+
+                var ticket = TicketFactory.Create(ticketType, trainId, userId, Enums.TransportEnum.Train, price);
+                ticket.SendEmail(trainId, userId, Enums.TransportEnum.Train);
+
+                return RedirectToAction("Index");
+            }
+            return RedirectToAction("Index"); // zmienić na error page
         }
         #endregion
 

@@ -1,4 +1,4 @@
-﻿@model ZTP.Models.Train
+﻿@model ZTP.Models.TrainViewModel
 
 @{
     ViewBag.Title = "Details";
@@ -6,61 +6,84 @@
 
 <h2>Details</h2>
 
-<div>
-    <h4>Train</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.DepartureStationID)
-        </dt>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div>
+        <h4>Train</h4>
+        <hr/>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Train.DepartureStationID)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.DepartureStationID)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Train.DepartureStationID)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ArrivalStationID)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Train.ArrivalStationID)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ArrivalStationID)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Train.ArrivalStationID)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DepartureDate)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Train.DepartureDate)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.DepartureDate)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Train.DepartureDate)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ArrivalDate)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Train.ArrivalDate)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ArrivalDate)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Train.ArrivalDate)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.NumberOfSeats)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Train.NumberOfSeats)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.NumberOfSeats)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Train.NumberOfSeats)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Train.Price)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Price)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Train.Price)
+            </dd>
 
-    </dl>
-</div>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <dt>
+                    Ticket type:
+                </dt>
+                <dd>
+                    @Html.DropDownListFor(model => model.SelectedType, Model.TicketType)
+                    @Html.HiddenFor(model => model.Train.TrainID, Model.TrainId)
+                    @Html.HiddenFor(model => model.Train.Price, Model.Price)
+                </dd>
+            }
+        </dl>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Buy" class="btn btn-default"/>
+                </div>
+            </div>
+        }
+    </div>
+}
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.TrainID }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Train.TrainID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

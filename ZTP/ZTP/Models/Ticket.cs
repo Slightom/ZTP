@@ -11,8 +11,9 @@ namespace ZTP.Models
     {
         
         public int TicketID { get; set; }
-        public int FlightID { get; set; }
-        public int TrainID { get; set; }
+
+        public int? FlightID { get; set; }
+        public int? TrainID { get; set; }
         public string UserID { get; set; }
 
         public double Price { get; set; }

@@ -60,7 +60,7 @@
             </dt>
 
             <dd>
-                @Html.DisplayFor(model => model.Flight.Price, Model.Price)
+                @Html.DisplayFor(model => model.Flight.Price)
             </dd>
             @if (User.Identity.IsAuthenticated)
             {
@@ -70,6 +70,7 @@
                 <dd>
                     @Html.DropDownListFor(model => model.SelectedType, Model.TicketType)
                     @Html.HiddenFor(model => model.Flight.FlightID, Model.FlightId)
+                    @Html.HiddenFor(model => model.Flight.Price, Model.Price)
                 </dd>
             }
         </dl>

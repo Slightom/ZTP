@@ -102,10 +102,12 @@ namespace ZTP.Controllers
             {
                 var flightId = flightViewModel.Flight.FlightID;
                 var userId = this.HttpContext.User.Identity.GetUserId();
-                var price = flightViewModel.Price;
+                var price = flightViewModel.Flight.Price;
                 var ticketType = (Enums.TicketType)flightViewModel.SelectedType;
 
                 var ticket = TicketFactory.Create(ticketType, flightId, userId, Enums.TransportEnum.Flight, price);
+                ticket.SendEmail(flightId, userId, Enums.TransportEnum.Flight);
+
                 return RedirectToAction("Index");
             }
             return RedirectToAction("Index"); // zmienić na error page

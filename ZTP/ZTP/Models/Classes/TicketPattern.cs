@@ -1,6 +1,7 @@
 ﻿using System;
 using System.CodeDom;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -12,7 +13,6 @@ namespace ZTP.Models.Classes
 {
     public abstract class TicketPattern
     {
-        private EmailService _emailService = new EmailService();
         private ApplicationDbContext _dbContext = new ApplicationDbContext();
 
         protected abstract double GetTicketPrice();
@@ -41,15 +41,6 @@ namespace ZTP.Models.Classes
             ticket.Price = price;
             _dbContext.Tickets.Add(ticket);
             _dbContext.SaveChanges();
-
-            var emailBody = GenerateMailBody(transportId, transport);
-            var user = _dbContext.Users.Single(x => x.Id.Equals(userId));
-            var userEmail = user.Email;
-
-            Task.Run(async () =>
-            {
-                await _emailService.SendEmailAsync(userEmail, emailBody, "Ticket Purchase");
-            });
 
             return true;
         }
@@ -83,30 +74,7 @@ namespace ZTP.Models.Classes
             return ticket;
         }
 
-        private string GenerateMailBody(int transportId, Enums.TransportEnum transport)
-        {
-            var text = "Zakupiono bilet na trasę ";
-
-            switch (transport)
-            {
-                case Enums.TransportEnum.Flight:
-                {
-                    var flight = _dbContext.Flights.Single(x => x.FlightID == transportId);
-                    text += flight.DepartureAirport.Name + " - " + flight.ArrivalAirport.Name + "\n";
-                    text += "Dnia: " + flight.DepartureDate + "\n";
-                    break;
-                }
-                case Enums.TransportEnum.Train:
-                {
-                    var train = _dbContext.Trains.Single(x => x.TrainID == transportId);
-                    text += train.DepartureStation.Name + " - " + train.ArrivalStation.Name + "\n";
-                    text += "Dnia: " + train.DepartureDate + "\n";
-                    break;
-                }
-            }
-
-            return text;
-        }
+        
 
     }
 }
