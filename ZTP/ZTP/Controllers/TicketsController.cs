@@ -15,7 +15,7 @@ namespace ZTP.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        [Authorize(Roles ="User")]
+        [Authorize]
         public ActionResult Index()
         {
             string id = User.Identity.GetUserId();
@@ -55,6 +55,11 @@ namespace ZTP.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Ticket ticket = db.Tickets.Find(id);
+
+            ApplicationUser u = db.Users.Find(ticket.UserID);
+            u.AvailableFunds += ticket.Price;
+            db.SaveChanges();
+
             db.Tickets.Remove(ticket);
             db.SaveChanges();
             return RedirectToAction("Index");

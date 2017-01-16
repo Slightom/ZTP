@@ -104,6 +104,13 @@ namespace ZTP.Controllers
         {
             if (ModelState.IsValid)
             {
+                ApplicationUser u = db.Users.Find(this.HttpContext.User.Identity.GetUserId());
+                if (flightViewModel.Flight.Price > u.AvailableFunds)
+                {
+                    ViewBag.NoMoney = "You don't have enough money!";
+                    return View("Error");
+                }
+
                 var flightId = flightViewModel.Flight.FlightID;
                 var userId = this.HttpContext.User.Identity.GetUserId();
                 var price = flightViewModel.Flight.Price;

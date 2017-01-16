@@ -9,7 +9,7 @@ namespace ZTP.Models.Singleton
     public class SeatGenerator
     {
         private static SeatGenerator _seatGenerator = new SeatGenerator();
-        private ApplicationDbContext _dbContext = new ApplicationDbContext();
+       // private ApplicationDbContext _dbContext = new ApplicationDbContext();
 
         private SeatGenerator() { }
 
@@ -20,6 +20,8 @@ namespace ZTP.Models.Singleton
 
         public int GetSeatNumber(int id, Enums.TransportEnum transport)
         {
+            ApplicationDbContext _dbContext = new ApplicationDbContext();
+
             switch (transport)
             {
                 case Enums.TransportEnum.Flight:

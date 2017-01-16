@@ -42,6 +42,10 @@ namespace ZTP.Models.Classes
             _dbContext.Tickets.Add(ticket);
             _dbContext.SaveChanges();
 
+            ApplicationUser u = _dbContext.Users.Find(ticket.UserID);
+            u.AvailableFunds -= ticket.Price;
+            _dbContext.SaveChanges();
+
             return true;
         }
 

@@ -71,7 +71,11 @@ namespace ZTP.Controllers
                 TwoFactor = await UserManager.GetTwoFactorEnabledAsync(userId),
                 Logins = await UserManager.GetLoginsAsync(userId),
                 BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId)
+                
             };
+            ApplicationDbContext db = new ApplicationDbContext();
+            model.AvailabluFunds = db.Users.Where(p => p.Id == userId).Select(p => p.AvailableFunds).First();
+
             return View(model);
         }
 

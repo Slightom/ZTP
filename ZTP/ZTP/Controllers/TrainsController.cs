@@ -98,6 +98,13 @@ namespace ZTP.Controllers
         {
             if (ModelState.IsValid)
             {
+                ApplicationUser u = db.Users.Find(this.HttpContext.User.Identity.GetUserId());
+                if(trainViewModel.Train.Price > u.AvailableFunds)
+                {
+                    ViewBag.NoMoney = "You don't have enough money!";
+                    return View("Error");
+                }
+
                 var trainId = trainViewModel.Train.TrainID;
                 var userId = this.HttpContext.User.Identity.GetUserId();
                 var price = trainViewModel.Train.Price;
