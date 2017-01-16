@@ -15,8 +15,9 @@
         <h4>Flight</h4>
         <hr />
         <dl class="dl-horizontal">
+
             <dt>
-                @Html.DisplayNameFor(model => model.Flight.ArrivalAirport.Name)
+                @Html.Label("To")
             </dt>
 
             <dd>
@@ -24,7 +25,7 @@
             </dd>
 
             <dt>
-                @Html.DisplayNameFor(model => model.Flight.DepartureAirport.Name)
+                @Html.Label("From")
             </dt>
 
             <dd>
@@ -76,16 +77,24 @@
         </dl>
         @if (User.Identity.IsAuthenticated)
         {
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Buy" class="btn btn-default" />
+            if (ViewBag.AvailableTickets > 0)
+            {
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Buy" class="mySubmitButton" />
+                        <span> Buy one of @ViewBag.AvailableTickets available Tickets! </span>
+                    </div>
                 </div>
-            </div>
+            }
+            else
+            {
+                <span>All Tickets are sold. Find another flight.</span><br />
+            }
+
         }
 
     </div>
 }
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Flight.FlightID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

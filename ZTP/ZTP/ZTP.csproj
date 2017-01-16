@@ -207,6 +207,7 @@
     <Compile Include="Controllers\FlightsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\TicketsController.cs" />
     <Compile Include="Controllers\TrainsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -237,7 +238,7 @@
     <Compile Include="Models\Factory\TicketFactory.cs" />
     <Compile Include="Models\Flight.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
-    <Compile Include="Models\FlightViewModel - Copy.cs" />
+    <Compile Include="Models\TrainViewModel.cs" />
     <Compile Include="Models\HelpfulModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Singleton\SeatGenerator.cs" />
@@ -341,6 +342,8 @@
     <Content Include="Views\Trains\Index.cshtml" />
     <Content Include="Views\Trains\IndexList.cshtml" />
     <Content Include="Views\Trains\IndexTiles.cshtml" />
+    <Content Include="Views\Tickets\Delete.cshtml" />
+    <Content Include="Views\Tickets\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

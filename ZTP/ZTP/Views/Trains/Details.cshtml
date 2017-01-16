@@ -14,19 +14,19 @@
         <hr/>
         <dl class="dl-horizontal">
             <dt>
-                @Html.DisplayNameFor(model => model.Train.DepartureStationID)
+                @Html.Label("To")
             </dt>
 
             <dd>
-                @Html.DisplayFor(model => model.Train.DepartureStationID)
+                @Html.DisplayFor(model => model.Train.ArrivalStation.Name)
             </dd>
 
             <dt>
-                @Html.DisplayNameFor(model => model.Train.ArrivalStationID)
+                @Html.Label("From")                
             </dt>
 
             <dd>
-                @Html.DisplayFor(model => model.Train.ArrivalStationID)
+                @Html.DisplayFor(model => model.Train.DepartureStation.Name)
             </dd>
 
             <dt>
@@ -75,15 +75,24 @@
         </dl>
         @if (User.Identity.IsAuthenticated)
         {
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Buy" class="btn btn-default"/>
+            if (ViewBag.AvailableTickets > 0)
+            {
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">                       
+                        <input type="submit" value="Buy" class="mySubmitButton" />
+                        <span> Buy one of @ViewBag.AvailableTickets available Tickets! </span>
+                    </div>
                 </div>
-            </div>
+            }
+            else
+            {
+                <span>All Tickets are sold. Find another train.</span><br />
+            }
+
         }
+       
     </div>
 }
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Train.TrainID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

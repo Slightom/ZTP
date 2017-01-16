@@ -36,24 +36,24 @@ namespace ZTP.Migrations
             var passwordHash = new PasswordHasher();
             ApplicationUser u = new ApplicationUser();
             u.Email = "tomasz.suchwalko@gmail.com";
-            u.UserName = "slightom";
+            u.UserName = "tomasz.suchwalko@gmail.com";
             u.PasswordHash = passwordHash.HashPassword("Slightomp+");
             u.SecurityStamp = Guid.NewGuid().ToString();
             u.AvailableFunds = 1000;
             context.Users.AddOrUpdate(p => p.UserName, u);
             context.SaveChanges();
-            im.AddUserToRoleByUsername("slightom", "User");
+            im.AddUserToRoleByUsername("tomasz.suchwalko@gmail.com", "User");
 
             u = new ApplicationUser();
             u.Email = "witek15@gmail.com";
-            u.UserName = "witek15";
+            u.UserName = "witek15@gmail.com";
             //u.Nick = "witek15";
             u.PasswordHash = passwordHash.HashPassword("Witek15p+");
             u.SecurityStamp = Guid.NewGuid().ToString();
             u.AvailableFunds = 1000;
             context.Users.AddOrUpdate(p => p.UserName, u);
             context.SaveChanges();
-            im.AddUserToRoleByUsername("witek15", "User");
+            im.AddUserToRoleByUsername("witek15@gmail.com", "User");
 
 
 

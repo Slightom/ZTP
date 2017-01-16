@@ -91,6 +91,10 @@ namespace ZTP.Controllers
                 return HttpNotFound();
             }
             var vm = new FlightViewModel(flight);
+
+            int takenTicket = db.Tickets.Where(p => p.FlightID == flight.FlightID).Count();
+            ViewBag.AvailableTickets = flight.NumberOfSeats - takenTicket;
+
             return View(vm);
         }
 

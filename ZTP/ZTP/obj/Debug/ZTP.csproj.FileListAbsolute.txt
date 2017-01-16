@@ -261,3 +261,4 @@ C:\Users\marcin\Documents\GitHub\ztp\ZTP\ZTP\bin\PagedList.Mvc.xml
 C:\Users\Tom\Documents\Visual Studio 2015\Projects\ZTP\ZTP\ZTP\obj\Debug\ZTP.Migrations.init.resources
 C:\Users\Tom\Documents\Visual Studio 2015\Projects\ZTP\ZTP\ZTP\obj\Debug\ZTP.csproj.GenerateResource.Cache
 C:\Users\marcin\Documents\GitHub\ztp\ZTP\ZTP\obj\Debug\ZTP.Migrations.tickeTest.resources
+C:\Users\Tom\Documents\Visual Studio 2015\Projects\ZTP\ZTP\ZTP\obj\Debug\ZTP.Migrations.tickeTest.resources

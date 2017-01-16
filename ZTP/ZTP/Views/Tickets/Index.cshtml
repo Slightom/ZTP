@@ -1,0 +1,93 @@
+﻿@model IEnumerable<ZTP.Models.Ticket>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.Label("Transport")
+        </th>
+
+        <th>
+            @Html.Label("From")
+        </th>
+        <th>
+            @Html.Label("To")
+        </th>
+        <th>
+            @Html.Label("DepartureDate")
+        </th>
+
+        <th>
+            @Html.Label("Travel Time")
+        </th>
+
+        <th>
+            @Html.Label("Seat Number")
+        </th>
+
+        <th>
+            @Html.Label("Price")
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        @if (item.FlightID != null)
+        {
+            <td>
+                @Html.Label("Flight")
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Flight.DepartureAirport.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Flight.ArrivalAirport.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Flight.DepartureDate)
+            </td>
+            <td>
+                @Html.Label((item.Flight.ArrivalDate - item.Flight.DepartureDate).ToString())
+            </td>
+        }
+        else
+        {
+            <td>
+                @Html.Label("Train")
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Train.DepartureStation.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Train.ArrivalStation.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Train.DepartureDate)
+            </td>
+            <td>
+                @Html.Label((item.Train.ArrivalDate - item.Train.DepartureDate).ToString())
+            </td>
+        }
+           
+        <td>
+            @Html.DisplayFor(modelItem => item.SeatNumber)
+        </td>    
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+
+        <td>
+            @Html.ActionLink("Delete", "Delete", new { id=item.TicketID })
+        </td>
+    </tr>
+}
+
+</table>

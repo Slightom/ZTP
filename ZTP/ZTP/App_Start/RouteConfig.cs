@@ -16,14 +16,14 @@ namespace ZTP
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Flights", action = "Index", id = UrlParameter.Optional }
             );
 
-            routes.MapRoute(
-                name: "IndexList",
-                url: "{controller}/{action}",
-                defaults: new {controller = "Home", action = "IndexList"}
-            );
+            //routes.MapRoute(
+            //    name: "IndexList",
+            //    url: "{controller}/{action}",
+            //    defaults: new {controller = "Home", action = "IndexList"}
+            //);
         }
     }
 }

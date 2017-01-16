@@ -84,7 +84,12 @@ namespace ZTP.Controllers
             {
                 return HttpNotFound();
             }
-            return View(train);
+            var vm = new TrainViewModel(train);
+
+            int takenTicket = db.Tickets.Where(p => p.TrainID == train.TrainID).Count();
+            ViewBag.AvailableTickets = train.NumberOfSeats - takenTicket;
+
+            return View(vm);
         }
 
         [HttpPost]
