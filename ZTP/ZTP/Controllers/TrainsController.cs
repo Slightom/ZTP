@@ -99,7 +99,12 @@ namespace ZTP.Controllers
             if (ModelState.IsValid)
             {
                 ApplicationUser u = db.Users.Find(this.HttpContext.User.Identity.GetUserId());
-                if(trainViewModel.Train.Price > u.AvailableFunds)
+                double price2 = trainViewModel.Train.Price;
+                if (trainViewModel.SelectedType == Enums.TicketType.Concessionary)
+                {
+                    price2 = Math.Round(price2 / 2, 2, MidpointRounding.AwayFromZero);
+                }
+                if (price2 > u.AvailableFunds)
                 {
                     ViewBag.NoMoney = "You don't have enough money!";
                     return View("Error");
@@ -172,17 +177,21 @@ namespace ZTP.Controllers
         #endregion
 
         #region delete
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Train train = db.Trains.Find(id);
             if (train == null)
             {
                 return HttpNotFound();
             }
+
+
             return View(train);
         }
 

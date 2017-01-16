@@ -33,7 +33,7 @@ namespace ZTP.Models.Singleton
                         {
                             var seatsList = flight.Tickets.Select(ticket => ticket.SeatNumber).ToList();
 
-                            for (int i = 1; i < seatsTaken; i++)
+                            for (int i = 1; i <= seatsTaken; i++)
                             {
                                 if (!seatsList.Contains(i)) return i;
                             }
@@ -52,7 +52,7 @@ namespace ZTP.Models.Singleton
                         {
                             var seatsList = train.Tickets.Select(ticket => ticket.SeatNumber).ToList();
 
-                            for (int i = 1; i < seatsTaken; i++)
+                            for (int i = 1; i <= seatsTaken; i++)
                             {
                                 if (!seatsList.Contains(i)) return i;
                             }

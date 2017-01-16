@@ -34,7 +34,7 @@ namespace ZTP.Controllers
 
 
 
-        [Authorize(Roles = "User")]
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)

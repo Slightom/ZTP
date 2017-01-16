@@ -105,7 +105,12 @@ namespace ZTP.Controllers
             if (ModelState.IsValid)
             {
                 ApplicationUser u = db.Users.Find(this.HttpContext.User.Identity.GetUserId());
-                if (flightViewModel.Flight.Price > u.AvailableFunds)
+                double price2 = flightViewModel.Flight.Price;
+                if(flightViewModel.SelectedType==Enums.TicketType.Concessionary)
+                {
+                    price2 = Math.Round(price2 / 2, 2, MidpointRounding.AwayFromZero);
+                }
+                if (price2 > u.AvailableFunds)
                 {
                     ViewBag.NoMoney = "You don't have enough money!";
                     return View("Error");
