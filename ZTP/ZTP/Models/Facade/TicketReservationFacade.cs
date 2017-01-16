@@ -17,7 +17,7 @@ namespace ZTP.Models.Facade
             _trainReservationSystem = new TrainReservationSystem();
         }
 
-        public bool ReserveTicket(int transportId, string userId, Enums.TransportEnum transport, Enums.TicketType ticketType)
+        public bool ReserveTicket(int transportId, string userId, Enums.TransportEnum transport, Enums.TicketType ticketType, double price)
         {
             switch (transport)
             {
@@ -25,7 +25,7 @@ namespace ZTP.Models.Facade
                     {
                         if (_flightReservationSystem.IsTicketAvailable(transportId))
                         {
-                            _flightReservationSystem.ReserveTicket(transportId, userId, ticketType);
+                            _flightReservationSystem.ReserveTicket(transportId, userId, ticketType, price);
                             return true;
                         }
                         break;
@@ -35,7 +35,7 @@ namespace ZTP.Models.Facade
 
                         if (_trainReservationSystem.IsTicketAvailable(transportId))
                         {
-                            _trainReservationSystem.ReserveTicket(transportId, userId, ticketType);
+                            _trainReservationSystem.ReserveTicket(transportId, userId, ticketType, price);
                             return true;
                         }
                         break;

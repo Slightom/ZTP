@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure.Annotations;
 using System.Linq;
 using System.Web;
 using ZTP.Models.Classes;
@@ -8,6 +9,7 @@ namespace ZTP.Models
 {
     public class Ticket
     {
+        
         public int TicketID { get; set; }
         public int FlightID { get; set; }
         public int TrainID { get; set; }

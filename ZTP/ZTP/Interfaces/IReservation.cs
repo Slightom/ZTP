@@ -10,6 +10,6 @@ namespace ZTP.Interfaces
     interface IReservation
     {
         bool IsTicketAvailable(int id);
-        void ReserveTicket(int id, string userId, Enums.TicketType ticketType);
+        void ReserveTicket(int id, string userId, Enums.TicketType ticketType, double price);
     }
 }

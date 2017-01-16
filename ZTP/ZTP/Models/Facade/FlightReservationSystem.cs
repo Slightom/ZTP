@@ -20,19 +20,19 @@ namespace ZTP.Models.Facade
             return seatsTaken < flight.NumberOfSeats;
         }
 
-        public void ReserveTicket(int flightId, string userId, Enums.TicketType ticketType)
+        public void ReserveTicket(int flightId, string userId, Enums.TicketType ticketType, double price)
         {
             switch (ticketType)
             {
                 case Enums.TicketType.Concessionary:
                     {
-                        var ticket = new ConcessionaryTicket();
+                        var ticket = new ConcessionaryTicket(price);
                         ticket.GenerateTicket(flightId, userId, Enums.TransportEnum.Flight);
                         break;
                     }
                 case Enums.TicketType.Normal:
                     {
-                        var ticket = new NormalTicket();
+                        var ticket = new NormalTicket(price);
                         ticket.GenerateTicket(flightId, userId, Enums.TransportEnum.Flight);
                         break;
                     }

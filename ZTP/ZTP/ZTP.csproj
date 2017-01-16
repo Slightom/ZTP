@@ -213,6 +213,7 @@
     </Compile>
     <Compile Include="Interfaces\IReservation.cs" />
     <Compile Include="Interfaces\IStrategy.cs" />
+    <Compile Include="Interfaces\ITicket.cs" />
     <Compile Include="Migrations\201701151938445_init.cs" />
     <Compile Include="Migrations\201701151938445_init.Designer.cs">
       <DependentUpon>201701151938445_init.cs</DependentUpon>
@@ -229,6 +230,7 @@
     <Compile Include="Models\Facade\FlightReservationSystem.cs" />
     <Compile Include="Models\Facade\TicketReservationFacade.cs" />
     <Compile Include="Models\Facade\TrainReservationSystem.cs" />
+    <Compile Include="Models\Factory\TicketFactory.cs" />
     <Compile Include="Models\Flight.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\HelpfulModels.cs" />
@@ -239,6 +241,7 @@
     <Compile Include="Models\Strategy\StrategyList.cs" />
     <Compile Include="Models\Strategy\StrategyTiles.cs" />
     <Compile Include="Models\Ticket.cs" />
+    <Compile Include="Models\FlightViewModel.cs" />
     <Compile Include="Models\Train.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />

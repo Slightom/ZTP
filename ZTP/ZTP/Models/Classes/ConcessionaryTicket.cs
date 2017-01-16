@@ -2,14 +2,23 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using ZTP.Interfaces;
 
 namespace ZTP.Models.Classes
 {
-    public class ConcessionaryTicket : TicketPattern
+    public class ConcessionaryTicket : TicketPattern, ITicket
     {
+        private double _price;
         protected override double GetTicketPrice()
         {
-            throw new NotImplementedException();
+            return Math.Round(_price/2, 2, MidpointRounding.AwayFromZero);
+        }
+
+        public ConcessionaryTicket() { }
+
+        public ConcessionaryTicket(double price)
+        {
+            _price = price;
         }
     }
 }

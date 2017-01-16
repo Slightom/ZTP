@@ -6,9 +6,12 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using ZTP.Models;
 using ZTP.Models.Strategy;
 using PagedList;
+using ZTP.Models.Classes;
+using ZTP.Models.Factory;
 
 namespace ZTP.Controllers
 {
@@ -87,7 +90,25 @@ namespace ZTP.Controllers
             {
                 return HttpNotFound();
             }
-            return View(flight);
+            var vm = new FlightViewModel(flight);
+            return View(vm);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Details(FlightViewModel flightViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var flightId = flightViewModel.Flight.FlightID;
+                var userId = this.HttpContext.User.Identity.GetUserId();
+                var price = flightViewModel.Price;
+                var ticketType = (Enums.TicketType)flightViewModel.SelectedType;
+
+                var ticket = TicketFactory.Create(ticketType, flightId, userId, Enums.TransportEnum.Flight, price);
+                return RedirectToAction("Index");
+            }
+            return RedirectToAction("Index"); // zmienić na error page
         }
         #endregion
 
@@ -251,5 +272,6 @@ namespace ZTP.Controllers
             return View(sm);
         }
 
+      
     }
 }

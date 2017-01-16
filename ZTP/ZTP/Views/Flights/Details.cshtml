@@ -1,4 +1,6 @@
-﻿@model ZTP.Models.Flight
+﻿@using System.Web.UI.WebControls
+@using ZTP.Models.Classes
+@model ZTP.Models.FlightViewModel
 
 @{
     ViewBag.Title = "Details";
@@ -6,61 +8,83 @@
 
 <h2>Details</h2>
 
-<div>
-    <h4>Flight</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ArrivalAirport.Name)
-        </dt>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div>
+        <h4>Flight</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Flight.ArrivalAirport.Name)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ArrivalAirport.Name)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Flight.ArrivalAirport.Name)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DepartureAirport.Name)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Flight.DepartureAirport.Name)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.DepartureAirport.Name)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Flight.DepartureAirport.Name)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DepartureDate)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Flight.DepartureDate)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.DepartureDate)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Flight.DepartureDate)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ArrivalDate)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Flight.ArrivalDate)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ArrivalDate)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Flight.ArrivalDate)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.NumberOfSeats)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Flight.NumberOfSeats)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.NumberOfSeats)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Flight.NumberOfSeats)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Flight.Price)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Price)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Flight.Price, Model.Price)
+            </dd>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <dt>
+                    Ticket type:
+                </dt>
+                <dd>
+                    @Html.DropDownListFor(model => model.SelectedType, Model.TicketType)
+                    @Html.HiddenFor(model => model.Flight.FlightID, Model.FlightId)
+                </dd>
+            }
+        </dl>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Buy" class="btn btn-default" />
+                </div>
+            </div>
+        }
 
-    </dl>
-</div>
+    </div>
+}
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.FlightID }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Flight.FlightID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

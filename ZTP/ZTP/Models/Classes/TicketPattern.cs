@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
+using ZTP.Interfaces;
 using ZTP.Models.Singleton;
 
 
@@ -39,6 +40,7 @@ namespace ZTP.Models.Classes
 
             ticket.Price = price;
             _dbContext.Tickets.Add(ticket);
+            _dbContext.SaveChanges();
 
             var emailBody = GenerateMailBody(transportId, transport);
             var user = _dbContext.Users.Single(x => x.Id.Equals(userId));
